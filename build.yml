@@ -1,0 +1,6 @@
+include:
+  - local: functions/build_kaniko.yml
+
+Build:
+  stage: build
+  extends: .build
