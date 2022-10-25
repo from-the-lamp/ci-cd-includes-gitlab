@@ -14,5 +14,3 @@ variables:
     - cd ${FOLDER}
     - terraform init
     - terraform $TERRAFORM_ACTION
-  tags:
-    - $BUILD_RUNNER_TAG
