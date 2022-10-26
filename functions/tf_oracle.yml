@@ -15,6 +15,14 @@ include:
   - chmod go-rwx ~/.oci/oci_api_key.pem
   - openssl rsa -pubout -in ~/.oci/oci_api_key.pem -out ~/.oci/oci_api_key_public.pem
   - openssl rsa -pubout -outform DER -in ~/.oci/oci_api_key.pem | openssl md5 -c
+  # after_script:
+  # - |
+  #   oci ce cluster create-kubeconfig 
+  #                 --cluster-id <cluster OCID> 
+  #                 --file ~/.kube/free-k8s-config 
+  #                 --region <region> 
+  #                 --token-version 2.0.0 
+  #                 --kube-endpoint PUBLIC_ENDPOINT
   artifacts:
     paths:
       - ${FOLDER}/plan.out
