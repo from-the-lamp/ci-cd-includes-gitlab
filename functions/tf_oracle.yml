@@ -4,25 +4,8 @@ include:
 .plan:
   extends: .terraform
   stage: plan
-  variables:
-     TERRAFORM_ACTION: "plan -out=plan.out"
-  before_script:
-  - mkdir -p ~/.ssh
-  - echo $TF_VAR_admin_id_rsa | base64 -d > ~/.ssh/id_rsa
-  - chmod 0700 ~/.ssh && chmod 0600 ~/.ssh/id_rsa
-  - mkdir -p ~/.oci
-  - openssl genrsa -out ~/.oci/oci_api_key.pem 2048
-  - chmod go-rwx ~/.oci/oci_api_key.pem
-  - openssl rsa -pubout -in ~/.oci/oci_api_key.pem -out ~/.oci/oci_api_key_public.pem
-  - openssl rsa -pubout -outform DER -in ~/.oci/oci_api_key.pem | openssl md5 -c
-  # after_script:
-  # - |
-  #   oci ce cluster create-kubeconfig 
-  #                 --cluster-id <cluster OCID> 
-  #                 --file ~/.kube/free-k8s-config 
-  #                 --region <region> 
-  #                 --token-version 2.0.0 
-  #                 --kube-endpoint PUBLIC_ENDPOINT
+  script:
+    - task plan
   artifacts:
     paths:
       - ${FOLDER}/plan.out
@@ -37,15 +20,8 @@ include:
   stage: apply
   variables:
      TERRAFORM_ACTION: "apply -auto-approve plan.out"
-  before_script:
-  - mkdir -p ~/.ssh
-  - echo $TF_VAR_admin_id_rsa | base64 -d > ~/.ssh/id_rsa
-  - chmod 0700 ~/.ssh && chmod 0600 ~/.ssh/id_rsa
-  - mkdir -p ~/.oci
-  - openssl genrsa -out ~/.oci/oci_api_key.pem 2048
-  - chmod go-rwx ~/.oci/oci_api_key.pem
-  - openssl rsa -pubout -in ~/.oci/oci_api_key.pem -out ~/.oci/oci_api_key_public.pem
-  - openssl rsa -pubout -outform DER -in ~/.oci/oci_api_key.pem | openssl md5 -c
+  script:
+    - task apply
   rules:
   - if: '$CI_COMMIT_REF_NAME == "master" || $CI_COMMIT_REF_NAME == "main"'
     changes:
