@@ -1,0 +1,29 @@
+include:
+  - local: functions/install_helm_chart.yml
+
+stages:
+  - deploy_extra
+  - deploy
+
+Extra:
+  stage: deploy_extra
+  extends: .deploy
+  variables:
+    HELM_REPO: ""
+    HELM_CHART_NAME: ./extra
+    DOCKER_IMAGE_NAME: ""
+    DOCKER_IMAGE_TAG: ""
+  before_script:
+    - export HELM_VALUES_FILE=$HELM_EXTRA_VALUES_FILE
+    - export HELM_RELEASE_NAME=$HELM_RELEASE_NAME-extra
+  rules:
+  - exists:
+    - extra/*
+    allow_failure: true
+
+App:
+  variables:
+    DOCKER_IMAGE_NAME: ""
+    DOCKER_IMAGE_TAG: ""
+  stage: deploy
+  extends: .deploy
