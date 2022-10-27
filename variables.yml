@@ -9,4 +9,8 @@ variables:
   DOCKER_BUILD_CONTEXT: "${CI_PROJECT_DIR}"
   DOCKER_FILE_PATH: "Dockerfile"
   KUBECONFIG_BASE64: "${KUBECONFIG_BASE64}"
-  
+  HELM_CHART_NAME: "${CI_PROJECT_NAME}-${CI_COMMIT_TAG}"
+  HELM_CHART_CHANNEL: "stable"
+  HELM_REPO_NAME: "neuraloom-helm-charts"
+  HELM_REPO_USER: "gitlab-ci-token"
+  HELM_REPO_PASS: "${CI_JOB_TOKEN}"

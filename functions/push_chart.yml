@@ -1,0 +1,19 @@
+include:
+  - local: 'variables.yml'
+
+stages:
+  - push
+  
+.push:
+  stage: push
+  image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
+  script:
+    - >- 
+      helm repo add --username ${HELM_REPO_USER} --password ${HELM_REPO_PASS} ${HELM_REPO_NAME}
+      https://git.neuraloom.net/api/v4/projects/${CI_PROJECT_ID}/packages/helm/${HELM_CHART_CHANNEL}
+    - helm cm-push ./${FOLDER} ${HELM_REPO_NAME}
+  tags:
+  - $BUILD_RUNNER_TAG
+  rules:
+    - changes: 
+      - ${FOLDER}/Chart.yaml
