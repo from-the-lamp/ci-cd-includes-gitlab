@@ -25,6 +25,7 @@ include:
     $(if [ ! -z "$HELM_VALUES_FILE" ]; then echo "--values $HELM_VALUES_FILE"; fi)
     $(if [ ! -z "$HELM_SECRET_VALUES_FILE" ]; then echo "--values $HELM_SECRET_VALUES_FILE"; fi) 
     $(if [ "$INTERNAL_REPO" == "true" ]; then echo "--username $HELM_REPO_USER --password $HELM_REPO_PASS"; fi)
-    --timeout $HELM_TIMEOUT 
-    --cleanup-on-fail 
+    --timeout $HELM_TIMEOUT
+    --cleanup-on-fail
+    --debug
     $HELM_ADDITIONAL_SETTINGS
