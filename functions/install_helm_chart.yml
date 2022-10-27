@@ -27,5 +27,4 @@ include:
     $(if [ "$INTERNAL_REPO" == "true" ]; then echo "--username $HELM_REPO_USER --password $HELM_REPO_PASS"; fi)
     --timeout $HELM_TIMEOUT 
     --cleanup-on-fail 
-    --debug 
     $HELM_ADDITIONAL_SETTINGS
