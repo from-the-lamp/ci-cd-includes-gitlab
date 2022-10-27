@@ -29,5 +29,3 @@ include:
     --cleanup-on-fail 
     --debug 
     $HELM_ADDITIONAL_SETTINGS
-  tags: 
-  - $DEPLOY_RUNNER_TAG
