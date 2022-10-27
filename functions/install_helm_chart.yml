@@ -7,8 +7,6 @@ include:
   before_script:
     - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
   script:
-  - echo $HELM_RELEASE_NAME
-  - echo $HELM_CHART_NAME
   - mkdir -p /root/.kube
   - echo $KUBECONFIG_BASE64 | base64 -d > /root/.kube/config
   - chmod 0600 /root/.kube/config
