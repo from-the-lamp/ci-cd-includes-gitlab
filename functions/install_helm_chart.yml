@@ -10,7 +10,7 @@ include:
   - mkdir -p /root/.kube
   - echo $KUBECONFIG_BASE64 | base64 -d > /root/.kube/config
   - chmod 0600 /root/.kube/config
-  - if [ ! -z "$HELM_REPO" ]; then helm repo add $HELM_REPO $(if [ "$HELM_INTERNAL_REPO" == "true" ]; then echo "--username $HELM_REPO_USER --password $HELM_REPO_PASS"; fi) ; helm repo update ; fi
+  - if [ ! -z "$HELM_REPO_URL" ]; then helm repo add $HELM_REPO_URL $(if [ "$HELM_INTERNAL_REPO" == "true" ]; then echo "--username $HELM_REPO_USER --password $HELM_REPO_PASS"; fi) ; helm repo update ; fi
   - helm upgrade --install $HELM_RELEASE_NAME $HELM_CHART_NAME 
     --namespace $K8S_NAMESPACE 
     --create-namespace 

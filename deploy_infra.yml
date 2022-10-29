@@ -9,7 +9,7 @@ Extra:
   stage: deploy_extra
   extends: .deploy
   variables:
-    HELM_REPO: ""
+    HELM_REPO_URL: ""
     HELM_CHART_NAME: ./extra
     DOCKER_IMAGE_NAME: ""
     DOCKER_IMAGE_TAG: ""
