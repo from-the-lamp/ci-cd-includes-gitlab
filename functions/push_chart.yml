@@ -8,9 +8,7 @@ stages:
   stage: push
   image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
   script:
-    - >- 
-      helm repo add --username ${HELM_REPO_USER} --password ${HELM_REPO_PASS} ${HELM_REPO_NAME}
-      ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/${HELM_CHART_CHANNEL}
+    - helm repo add --username ${HELM_REPO_USER} --password ${HELM_REPO_PASS} ${HELM_REPO_NAME} ${HELM_REPO}
     - helm cm-push ./${FOLDER} ${HELM_REPO_NAME}
   rules:
     - changes: 
