@@ -10,7 +10,7 @@ stages:
   script:
     - >- 
       helm repo add --username ${HELM_REPO_USER} --password ${HELM_REPO_PASS} ${HELM_REPO_NAME}
-      https://git.neuraloom.net/api/v4/projects/${CI_PROJECT_ID}/packages/helm/${HELM_CHART_CHANNEL}
+      ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/${HELM_CHART_CHANNEL}
     - helm cm-push ./${FOLDER} ${HELM_REPO_NAME}
   rules:
     - changes: 
