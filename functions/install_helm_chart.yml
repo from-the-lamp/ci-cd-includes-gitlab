@@ -28,3 +28,5 @@ include:
     --timeout $HELM_TIMEOUT
     --cleanup-on-fail
     $HELM_ADDITIONAL_SETTINGS
+  tags: 
+  - $DEPLOY_RUNNER_TAG

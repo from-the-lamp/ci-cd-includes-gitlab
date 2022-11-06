@@ -18,3 +18,5 @@ include:
       --cache=true
       $BUILD_ARGS
       $BUILD_ADDITION
+  tags: 
+  - $BUILD_RUNNER_TAG
