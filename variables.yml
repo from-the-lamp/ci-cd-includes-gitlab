@@ -18,7 +18,7 @@ variables:
   HELM_CHART_NAME: "infra-helm-charts/base"
   HELM_CHART_CHANNEL: "stable"
   HELM_RELEASE_NAME: "${CI_PROJECT_NAME}"
-  HELM_CHART_VERSION: "0.0.3"
+  HELM_CHART_VERSION: "0.0.4"
   HELM_VALUES_FILE: "values.yml"
   HELM_TIMEOUT: "1m30s"
   HELM_ADDITIONAL_SETTINGS: ""
