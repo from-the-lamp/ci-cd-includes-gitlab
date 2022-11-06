@@ -4,3 +4,5 @@ include:
 Build:
   stage: build
   extends: .build
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "main"'

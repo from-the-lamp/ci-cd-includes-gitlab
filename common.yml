@@ -1,0 +1,3 @@
+include:
+  - local: build.yml
+  - local: deploy.yml
