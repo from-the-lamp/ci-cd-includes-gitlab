@@ -1,0 +1,8 @@
+include:
+  - local: functions/install_helm_chart.yml
+
+Deploy:
+  stage: deploy
+  extends: .deploy
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "main"'
