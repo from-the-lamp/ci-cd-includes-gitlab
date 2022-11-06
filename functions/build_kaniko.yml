@@ -16,6 +16,7 @@ include:
       --destination $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
       --destination $DOCKER_IMAGE_NAME:latest
       --cache=true
+      --build-arg opts="CGO_ENABLED=0 GOARCH=arm64"
       $BUILD_ARGS
       $BUILD_ADDITION
   tags: 
