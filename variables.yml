@@ -15,7 +15,7 @@ variables:
   HELM_REPO_USER: "gitlab-ci-token"
   HELM_REPO_PASS: "${CI_JOB_TOKEN}"
   HELM_REPO_URL: " ${CI_API_V4_URL}/projects/${HELM_INTERNAL_REPO_ID}/packages/helm/stable"
-  HELM_CHART_NAME: "base"
+  HELM_CHART_NAME: "infra-helm-charts/base"
   HELM_CHART_CHANNEL: "stable"
   HELM_RELEASE_NAME: "${CI_PROJECT_NAME}"
   HELM_CHART_VERSION: "0.0.2"
