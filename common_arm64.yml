@@ -1,0 +1,3 @@
+include:
+  - local: build_arm64.yml
+  - local: deploy.yml

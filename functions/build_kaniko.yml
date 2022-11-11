@@ -9,15 +9,16 @@ include:
   script:
     - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"${REGISTRY_HOST}\":{\"auth\":\"$(printf "%s:%s" "${REGISTRY_USER}" "${REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
-    - >- 
-      /kaniko/executor 
+    - /kaniko/executor 
       --context $DOCKER_BUILD_CONTEXT 
       --dockerfile $CI_PROJECT_DIR/$DOCKER_FILE_PATH 
       --destination $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
       --destination $DOCKER_IMAGE_NAME:latest
       --cache=true
-      --build-arg opts="CGO_ENABLED=0 GOARCH=arm64"
-      --customPlatform=linux/arm64/v8
+      $(if [ "$BUILD_ARM64" = true ]; then
+        echo "--customPlatform=linux/arm64/v8"
+        echo "--build-arg opts='CGO_ENABLED=0 GOARCH=arm64'";
+      fi) 
       $BUILD_ARGS
       $BUILD_ADDITION
   tags: 
