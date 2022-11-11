@@ -8,7 +8,7 @@ include:
     entrypoint: [""]
   before_script:
     - |-
-      if [ "$IS_NL_CLIENT" == "true" ]; then
+      if [ "$BUILD_ARM64" == "true" ]; then
         export ARM_ARGS="--customPlatform=linux/arm64/v8 --build-arg opts='CGO_ENABLED=0 GOARCH=arm64'"
       fi
   script:
