@@ -25,3 +25,5 @@ variables:
   K8S_NAMESPACE: default
   BUILD_RUNNER_TAG: "k8s"
   DEPLOY_RUNNER_TAG: "k8s"
+  BUILD_ARM64: "false"
+  
