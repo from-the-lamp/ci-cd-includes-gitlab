@@ -9,7 +9,7 @@ include:
   before_script:
     - |-
       if [ "$BUILD_ARM64" == "true" ]; then
-        export ARM_ARGS="--customPlatform=linux/arm64/v8 --build-arg opts=CGO_ENABLED=0 GOARCH=arm64"
+        export ARM_ARGS="--customPlatform=linux/arm64/v8 '--build-arg opts=CGO_ENABLED=0 GOARCH=arm64'"
       fi
   script:
     - mkdir -p /kaniko/.docker
