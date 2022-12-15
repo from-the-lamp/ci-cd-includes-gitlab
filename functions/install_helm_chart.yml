@@ -1,5 +1,5 @@
 include:
-  - local: 'variables.yml'
+  - local: variables.yml
 
 .deploy:
   stage: deploy
@@ -7,26 +7,20 @@ include:
   before_script:
     - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
   script:
-  - mkdir -p /root/.kube
-  - echo $KUBECONFIG_BASE64 | base64 -d > /root/.kube/config
-  - chmod 0600 /root/.kube/config
+  - mkdir -p ~/.kube && echo $KUBECONFIG_BASE64 | base64 -d > ~/.kube/config && chmod 0600 ~/.kube/config
   - if [ ! -z "$HELM_REPO_URL" ]; then helm repo add ${HELM_REPO_NAME} ${HELM_REPO_URL} $(if [ "$HELM_INTERNAL_REPO" == "true" ]; then echo "--username $HELM_REPO_USER --password $HELM_REPO_PASS"; fi) ; helm repo update ; fi
-  - helm upgrade --install $HELM_RELEASE_NAME $HELM_CHART_NAME 
+  - helm upgrade --install $HELM_RELEASE_NAME $HELM_REPO_NAME/$HELM_CHART_NAME 
     --namespace $K8S_NAMESPACE 
     --create-namespace 
     --set vaultInject.path=$VAULT_ENV_PATH
-    $(if [ ! -z "$DOCKER_IMAGE_NAME" ]; then echo "--set image.name=$DOCKER_IMAGE_NAME"; fi) 
+    $(if [ ! -z "$DOCKER_IMAGE_NAME" ]; then echo "--set image.name=$DOCKER_IMAGE_NAME"; fi)
     $(if [ ! -z "$DOCKER_IMAGE_TAG" ]; then echo "--set image.tag=$DOCKER_IMAGE_TAG"; fi)
-    $(if [ "$IS_NL_CLIENT" == "true" ]; then
-      echo "--set ingress.host=$INGRESS_HOST";
-      echo "--set serviceAccount.name=$SERVICE_ACCOUNT_NAME";
-    fi)
-    $(if [ ! -z "$HELM_CHART_VERSION" ]; then echo "--version $HELM_CHART_VERSION"; fi) 
+    $(if [ ! -z "$HELM_CHART_VERSION" ]; then echo "--version $HELM_CHART_VERSION"; fi)
     $(if [ ! -z "$HELM_VALUES_FILE" ]; then echo "--values $HELM_VALUES_FILE"; fi)
-    $(if [ ! -z "$HELM_SECRET_VALUES_FILE" ]; then echo "--values $HELM_SECRET_VALUES_FILE"; fi) 
-    $(if [ "$INTERNAL_REPO" == "true" ]; then echo "--username $HELM_REPO_USER --password $HELM_REPO_PASS"; fi)
+    $(if [ ! -z "$HELM_SECRET_VALUES_FILE" ]; then echo "--values $HELM_SECRET_VALUES_FILE"; fi)
+    $(if [ "$HELM_INTERNAL_REPO" == "true" ]; then echo "--username $HELM_REPO_USER --password $HELM_REPO_PASS"; fi)
+    $(if [ ! -z "$HELM_ADDITIONAL_SETTINGS" ]; then echo "$HELM_ADDITIONAL_SETTINGS"; fi)
     --timeout $HELM_TIMEOUT
     --cleanup-on-fail
-    $HELM_ADDITIONAL_SETTINGS
   tags: 
   - $DEPLOY_RUNNER_TAG
