@@ -27,4 +27,3 @@ variables:
   DEPLOY_RUNNER_TAG: "k8s-arm-default"
   BUILD_ARM64: "false"
   TF_VAR_gitlab_token: "${CI_JOB_TOKEN}"
-  
