@@ -5,25 +5,31 @@ stages:
   - deploy_extra
   - deploy
 
-Extra:
+variables:
+  K8S_NAMESPACE: "infra"
+  HELM_TIMEOUT: 2m
+  HELM_INTERNAL_REPO: "false"
+  DOCKER_IMAGE_NAME: ""
+  DOCKER_IMAGE_TAG: ""
+
+.func_extra:
   stage: deploy_extra
   extends: .deploy
   variables:
     HELM_REPO_URL: ""
-    HELM_CHART_NAME: ./extra
-    DOCKER_IMAGE_NAME: ""
-    DOCKER_IMAGE_TAG: ""
-  before_script:
-    - export HELM_VALUES_FILE=$HELM_EXTRA_VALUES_FILE
-    - export HELM_RELEASE_NAME=$HELM_RELEASE_NAME-extra
+    HELM_REPO_NAME: ""
   rules:
-  - exists:
-    - extra/*
+  - if: '$CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "main"'
+    changes:
+    - ${HELM_EXTRA_CHART_PATH}/*
     allow_failure: true
 
-App:
-  variables:
-    DOCKER_IMAGE_NAME: ""
-    DOCKER_IMAGE_TAG: ""
+.func_app:
   stage: deploy
   extends: .deploy
+  variables:
+    HELM_VALUES_FILE: "${HELM_RELEASE_NAME}/values.yml"
+  rules:
+  - if: '$CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "main"'
+    changes:
+    - ${HELM_RELEASE_NAME}/*
