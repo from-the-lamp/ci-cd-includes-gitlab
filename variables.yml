@@ -1,11 +1,6 @@
 variables:
-<<<<<<< HEAD
   CI_CD_DOCKER_IMAGE_NAME: "registry.gitlab.com/infra154/docker-images/cicd"
-  CI_CD_DOCKER_IMAGE_VERSION: "22ffa637"
-=======
-  CI_CD_DOCKER_IMAGE_NAME: "registry.gitlab.com/infra154/docker-images/cicd-arm"
-  CI_CD_DOCKER_IMAGE_VERSION: "60e103ae"
->>>>>>> c517448 (Test)
+  CI_CD_DOCKER_IMAGE_VERSION: "afb307df"
   REGISTRY_HOST: "${CI_REGISTRY}"
   REGISTRY_USER: "${CI_REGISTRY_USER}"
   REGISTRY_PASSWORD: "${CI_REGISTRY_PASSWORD}"
