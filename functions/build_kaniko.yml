@@ -15,6 +15,8 @@ include:
       --destination $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
       --destination $DOCKER_IMAGE_NAME:latest
       --cache=true
+      --customPlatform=linux/arm64/v8 
+      --build-arg opts=GOARCH=arm64
       $ARM_ARGS
       $BUILD_ARGS
       $BUILD_ADDITION
