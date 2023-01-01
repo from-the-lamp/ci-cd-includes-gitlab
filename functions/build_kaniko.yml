@@ -17,7 +17,6 @@ include:
       --destination $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
       --destination $DOCKER_IMAGE_NAME:latest
       --cache=true
-      $ARM_ARGS
       $BUILD_ARGS
       $BUILD_ADDITION
   tags: 
