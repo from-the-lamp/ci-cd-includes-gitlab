@@ -3,8 +3,10 @@ include:
 
 .build:
   stage: build
+  variables:
+    KANIKO_IMAGE_TAG: v1.9.1-debug
   image:
-    name: gcr.io/kaniko-project/executor:v1.9.1-debug
+    name: gcr.io/kaniko-project/executor:${KANIKO_IMAGE_TAG}
     entrypoint: [""]
   script:
     - mkdir -p /kaniko/.docker
