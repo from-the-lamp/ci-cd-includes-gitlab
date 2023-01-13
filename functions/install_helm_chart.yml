@@ -7,7 +7,7 @@ include:
   before_script:
     - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
   script:
-  - mkdir -p ~/.kube && echo $KUBECONFIG_BASE64 | base64 -d > ~/.kube/config && chmod 0600 ~/.kube/config
+  - mkdir -p ~/.kube && echo $KUBE_CONFIG | base64 -d > ~/.kube/config && chmod 0600 ~/.kube/config
   - if [ ! -z "$HELM_REPO_URL" ]; then helm repo add ${HELM_REPO_NAME} ${HELM_REPO_URL} $(if [ "$HELM_INTERNAL_REPO" == "true" ]; then echo "--username $HELM_REPO_USER --password $HELM_REPO_PASS"; fi) ; helm repo update ; fi
   - helm upgrade --install $HELM_RELEASE_NAME $HELM_REPO_NAME/$HELM_CHART_NAME 
     --namespace $K8S_NAMESPACE 
