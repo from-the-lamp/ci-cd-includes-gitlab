@@ -2,4 +2,4 @@ include:
   - local: functions/terraform.yml
 
 variables:
-  OCI_CONFIG_PATH: $ORACLE_CONFIG
+  OCI_CONFIG_PATH: $CI_PROJECT_DIR/../$CI_PROJECT_NAME.tmp/ORACLE_CONFIG
