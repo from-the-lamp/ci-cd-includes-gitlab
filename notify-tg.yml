@@ -6,6 +6,6 @@ Notify-tg:
   variables:
     CURL_URL: https://notify-tg.from-the-lamp.com/send-message
     API_SECRET: $TG_NOTIFY_SVC_API_SECRET
-    TEXT: "Test"
+    TEXT: "Новый релиз: [$CI_PROJECT_NAME]($CI_PROJECT_URL)"
   rules:
     - if: "$NOTIFY_ENABLED == 'true'"
