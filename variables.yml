@@ -27,5 +27,5 @@ variables:
   DEPLOY_RUNNER_TAG: "k8s-arm-default"
   BUILD_ARM64: "false"
   TF_VAR_gitlab_token: "${CI_JOB_TOKEN}"
-  TG_NOTIFY_SVC_URL: https://notify-tg.from-the-lamp.com
+  NOTIFY_ENABLED: "false"
   

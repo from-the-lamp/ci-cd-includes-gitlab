@@ -1,7 +1,8 @@
 include:
   - local: build.yml
   - local: deploy.yml
-
+  - local: notify.yml
+  
 variables:
   BUILD_ARM64: "true"
   K8S_NAMESPACE: projects
