@@ -1,7 +1,7 @@
 include:
   - local: build.yml
   - local: deploy.yml
-  - local: notify.yml
+  - local: notify-tg.yml
   
 variables:
   BUILD_ARM64: "true"
