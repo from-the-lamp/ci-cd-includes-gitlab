@@ -1,0 +1,21 @@
+include:
+  - local: variables.yml
+
+.notify:
+  stage: notify
+  image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
+  variables:
+    CURL_URL: $TG_NOTIFY_SVC_URL
+    API_SECRET: $TG_NOTIFY_SVC_API_SECRET
+    TEXT: "Test"
+  before_script:
+    - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
+  script:
+  - |
+    curl -X POST \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer $API_SECRET" \
+      -d "{\"text\": \"$TEXT\"}" \
+      ${CURL_URL}/send-message
+  tags: 
+  - $DEPLOY_RUNNER_TAG
