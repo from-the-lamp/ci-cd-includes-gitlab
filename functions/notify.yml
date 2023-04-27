@@ -2,7 +2,7 @@ include:
   - local: variables.yml
 
 .notify:
-  stage: notify
+  stage: .post
   image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
   variables:
     CURL_URL: $TG_NOTIFY_SVC_URL
