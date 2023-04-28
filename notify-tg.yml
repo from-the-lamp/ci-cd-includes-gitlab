@@ -4,7 +4,7 @@ include:
 Notify-tg:
   extends: .notify
   variables:
-    CURL_URL: https://notify-tg.from-the-lamp.com/send-message
+    CURL_URL: https://notify-tg.from-the-lamp.com/send
     API_SECRET: $TG_NOTIFY_SVC_API_SECRET
     TEXT: "Новый релиз: [$CI_PROJECT_NAME]($CI_PROJECT_URL)"
   rules:

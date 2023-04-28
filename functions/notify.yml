@@ -9,9 +9,11 @@ include:
   script:
   - |
     curl -X POST \
-      -H "Content-Type: application/json" \
       -H "Authorization: Bearer $API_SECRET" \
-      -d "{\"text\": \"$TEXT\"}" \
+      -H "Content-Type: multipart/form-data" \
+      -F "parse_mode=MarkdownV2" \
+      -F "message=$TEXT" \
       ${CURL_URL}
   tags: 
   - $DEPLOY_RUNNER_TAG
+
