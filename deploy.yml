@@ -5,4 +5,4 @@ Deploy:
   stage: deploy
   extends: .deploy
   rules:
-    - if: '$CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "main"'
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

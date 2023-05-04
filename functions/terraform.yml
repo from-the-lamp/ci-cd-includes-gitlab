@@ -37,7 +37,7 @@ variables:
   variables:
     ACTION: "task apply:force"
   rules:
-  - if: '$CI_COMMIT_REF_NAME == "master" || $CI_COMMIT_REF_NAME == "main"'
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     changes:
     - ${DIR}/*
     when: manual
