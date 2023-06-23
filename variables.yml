@@ -22,7 +22,7 @@ variables:
   HELM_VALUES_FILE: "values.yml"
   HELM_TIMEOUT: "1m30s"
   HELM_ADDITIONAL_SETTINGS: ""
-  K8S_NAMESPACE: default
+  K8S_NAMESPACE: ""
   BUILD_RUNNER_TAG: ""
   DEPLOY_RUNNER_TAG: ""
   BUILD_ARM64: "false"
