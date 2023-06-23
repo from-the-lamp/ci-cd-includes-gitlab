@@ -1,5 +1,5 @@
 variables:
-  CI_CD_DOCKER_IMAGE_NAME: "registry.gitlab.com/infra154/docker-images/cicd-arm"
+  CI_CD_DOCKER_IMAGE_NAME: "registry.gitlab.com/from-the-lamp/infra/docker-images/cicd-arm"
   CI_CD_DOCKER_IMAGE_VERSION: "1f5b53a4"
   REGISTRY_HOST: "${CI_REGISTRY}"
   REGISTRY_USER: "${CI_REGISTRY_USER}"
