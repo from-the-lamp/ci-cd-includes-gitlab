@@ -5,4 +5,3 @@ include:
   
 variables:
   BUILD_ARM64: "true"
-  K8S_NAMESPACE: projects
