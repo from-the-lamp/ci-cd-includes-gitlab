@@ -4,6 +4,8 @@ include:
 Stage:Deploy:
   stage: deploy
   extends: .deploy
+  variables:
+    KUBECONFIG_BASE64: ${stage_KUBECONFIG_BASE64}
   environment:
     name: stage
     url: https://stage.from-the-lamp.com
@@ -13,6 +15,8 @@ Stage:Deploy:
 Prod:Deploy:
   stage: deploy
   extends: .deploy
+  variables:
+    KUBECONFIG_BASE64: ${prod_KUBECONFIG_BASE64}
   environment:
     name: prod
     url: https://from-the-lamp.com
