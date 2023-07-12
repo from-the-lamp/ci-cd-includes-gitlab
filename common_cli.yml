@@ -1,6 +1,3 @@
 include:
   - local: build.yml
   - local: notify-tg.yml
-  
-variables:
-  BUILD_ARM64: "true"

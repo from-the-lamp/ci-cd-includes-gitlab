@@ -26,7 +26,6 @@ variables:
   K8S_NAMESPACE: ""
   BUILD_RUNNER_TAG: ""
   DEPLOY_RUNNER_TAG: ""
-  BUILD_ARM64: "false"
   TF_VAR_gitlab_token: "${CI_JOB_TOKEN}"
   NOTIFY_ENABLED: "false"
   
