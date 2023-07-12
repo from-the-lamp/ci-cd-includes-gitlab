@@ -1,0 +1,18 @@
+include:
+  - local: functions/kube-score.yml
+
+Stage:kube-score:
+  extends: .kube-score
+  needs:
+    - Stage:Deploy
+  rules:
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  
+Prod:kube-score:
+  extends: .kube-score
+  needs:
+    - Prod:Deploy
+  rules:
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    exists:
+      - $HELM_PROD_VALUES_FILE

@@ -1,0 +1,12 @@
+include:
+  - local: variables.yml
+
+.kube-score:
+  stage: .post
+  image: 
+    name: zegl/kube-score:latest
+    entrypoint: ["/bin/sh", "-c"]
+  script:
+    - |
+      kube-score score manifest.yaml --ignore-test pod-networkpolicy --ignore-test container-security-context-readonlyrootfilesystem  --ignore-test container-security-context-user-group-id	--ignore-test container-security-context-privileged &&\
+      echo "Success: all checks have been passed!"

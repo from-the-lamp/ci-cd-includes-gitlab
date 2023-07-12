@@ -19,6 +19,7 @@ include:
     $(if [ ! -z "$HELM_CHART_VERSION" ]; then echo "--version $HELM_CHART_VERSION"; fi)
     $(if [ ! -z "$HELM_VALUES_FILE" ]; then echo "--values $HELM_VALUES_FILE"; fi)
     $(if [ ! -z "$HELM_SECRET_VALUES_FILE" ]; then echo "--values $HELM_SECRET_VALUES_FILE"; fi)
+    $(if [ "$CI_ENVIRONMENT_NAME" == "prod" ]; then echo "--values $HELM_PROD_VALUES_FILE"; fi)
     $(if [ "$HELM_INTERNAL_REPO" == "true" ]; then echo "--username $HELM_REPO_USER --password $HELM_REPO_PASS"; fi)
     $(if [ ! -z "$HELM_ADDITIONAL_SETTINGS" ]; then echo "$HELM_ADDITIONAL_SETTINGS"; fi)
     --timeout $HELM_TIMEOUT
