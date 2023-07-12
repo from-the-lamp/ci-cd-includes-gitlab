@@ -24,5 +24,10 @@ include:
     $(if [ ! -z "$HELM_ADDITIONAL_SETTINGS" ]; then echo "$HELM_ADDITIONAL_SETTINGS"; fi)
     --timeout $HELM_TIMEOUT
     --cleanup-on-fail
+  after_script:
+    - helm -n $K8S_NAMESPACE get manifest $HELM_RELEASE_NAME > manifest.yaml
+  artifacts:
+    paths:
+      - manifest.yaml
   tags: 
   - $DEPLOY_RUNNER_TAG
