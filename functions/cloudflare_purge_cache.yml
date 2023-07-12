@@ -1,0 +1,22 @@
+include:
+  - local: variables.yml
+
+.purge_all:
+  stage: .post
+  image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
+  script:
+    - |
+      PURGE=$(curl -sX POST "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/purge_cache" \
+                 -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+                 -H "Content-Type: application/json" \
+                 --data '{"purge_everything":true}' | jq -r '.success')
+    - |
+      if [ "$PURGE" = "true" ]; then
+        echo "Success: cache has been purged!"
+      elif [ "$PURGE" = "false" ]; then
+        echo "Error: cache has not been purged!"
+        exit 1
+      else
+        echo "Something went wrong..."
+        exit 1
+      fi

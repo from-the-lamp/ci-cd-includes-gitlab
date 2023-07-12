@@ -2,6 +2,7 @@ include:
   - local: build.yml
   - local: deploy.yml
   - local: notify-tg.yml
-  
+  - local: kube-score.yml
+
 variables:
   BUILD_ARM64: "true"
