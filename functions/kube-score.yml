@@ -8,5 +8,5 @@ include:
     entrypoint: ["/bin/sh", "-c"]
   script:
     - |
-      kube-score score manifest.yaml --ignore-test pod-networkpolicy --ignore-test container-security-context-readonlyrootfilesystem  --ignore-test container-security-context-user-group-id	--ignore-test container-security-context-privileged &&\
+      kube-score score manifest.yaml --ignore-test pod-networkpolicy &&\
       echo "Success: all checks have been passed!"
