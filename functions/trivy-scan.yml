@@ -1,0 +1,10 @@
+include:
+  - local: variables.yml
+
+.scan:
+  stage: .post
+  image: 
+    name: aquasec/trivy:latest
+    entrypoint: ["/bin/sh", "-c"]
+  script:
+    - trivy image $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG --severity CRITICAL --scanners vuln

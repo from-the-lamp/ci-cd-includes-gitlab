@@ -1,0 +1,9 @@
+include:
+  - local: functions/trivy-scan.yml
+
+Trivy-scan:
+  extends: .scan
+  needs:
+    - Build
+  rules:
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

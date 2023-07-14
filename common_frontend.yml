@@ -1,5 +1,6 @@
 include:
   - local: build.yml
+  - local: trivy-scan.yml
   - local: deploy.yml
   - local: notify-tg.yml
   - local: purge_cache.yml
