@@ -9,6 +9,8 @@ Stage:Deploy:
   environment:
     name: stage
     url: https://stage.from-the-lamp.com
+  needs:
+    - Build
   rules:
   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
@@ -20,6 +22,8 @@ Prod:Deploy:
   environment:
     name: prod
     url: https://from-the-lamp.com
+  needs:
+    - Build
   rules:
   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     exists:
