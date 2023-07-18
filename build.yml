@@ -4,8 +4,6 @@ include:
 Build:
   stage: build
   extends: .build
-  variables:
-    BUILD_ADDITION: "--platform linux/arm/v7"
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     
