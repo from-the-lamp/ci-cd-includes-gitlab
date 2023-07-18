@@ -13,7 +13,7 @@ variables:
   HELM_INTERNAL_REPO_ID: "40582099"
   HELM_CHART_CHANNEL: "stable"
   HELM_CHART_NAME: "base"
-  HELM_REPO_NAME: "infra-helm-charts"
+  HELM_REPO_NAME: "from-the-lamp"
   HELM_REPO_USER: "gitlab-ci-token"
   HELM_REPO_PASS: "${CI_JOB_TOKEN}"
   HELM_REPO_URL: " ${CI_API_V4_URL}/projects/${HELM_INTERNAL_REPO_ID}/packages/helm/${HELM_CHART_CHANNEL}"
