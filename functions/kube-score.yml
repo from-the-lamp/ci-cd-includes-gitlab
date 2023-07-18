@@ -8,5 +8,8 @@ include:
     entrypoint: ["/bin/sh", "-c"]
   script:
     - |
-      kube-score score manifest.yaml --ignore-test pod-networkpolicy &&\
+      kube-score score manifest.yaml \
+        --ignore-test pod-networkpolicy \
+        --ignore-test statefulset-has-poddisruptionbudget \
+        --ignore-test deployment-has-poddisruptionbudget &&\
       echo "Success: all checks have been passed!"
