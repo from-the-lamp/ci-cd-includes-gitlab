@@ -3,4 +3,4 @@ include:
 
 Build:
   variables:
-    BUILD_ADDITION: "--platform linux/arm/v7"
+    BUILD_ADDITION: "--custom-platform linux/arm/v7"
