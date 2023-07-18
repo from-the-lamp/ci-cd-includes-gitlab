@@ -15,7 +15,7 @@ variables:
   script:
     - ${ACTION}
   tags: 
-  - ${BUILD_RUNNER_TAG}
+  - ${RUNNER_TAG}
 
 .plan:
   extends: .terraform

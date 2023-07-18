@@ -20,4 +20,4 @@ include:
       $BUILD_ARGS
       $BUILD_ADDITION
   tags: 
-  - $BUILD_RUNNER_TAG
+  - $RUNNER_TAG

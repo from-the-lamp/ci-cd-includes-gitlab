@@ -15,5 +15,5 @@ include:
       -F "message=$TEXT" \
       ${CURL_URL}
   tags: 
-  - $DEPLOY_RUNNER_TAG
+  - $RUNNER_TAG
 

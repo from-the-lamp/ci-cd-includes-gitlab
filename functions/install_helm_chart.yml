@@ -30,4 +30,4 @@ include:
     paths:
       - manifest.yaml
   tags: 
-  - $DEPLOY_RUNNER_TAG
+  - $RUNNER_TAG

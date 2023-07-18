@@ -16,4 +16,4 @@ stages:
     - changes: 
       - ${FOLDER}/Chart.yaml
   tags: 
-  - $BUILD_RUNNER_TAG
+  - $RUNNER_TAG
