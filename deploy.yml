@@ -8,11 +8,11 @@ Stage:Deploy:
     KUBECONFIG_BASE64: ${stage_KUBECONFIG_BASE64}
   environment:
     name: stage
-    url: https://stage.from-the-lamp.com
+    url: https://from-the-lamp.work
   needs:
     - Build
   rules:
-  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  - if: $CI_COMMIT_BRANCH == "stage"
 
 Prod:Deploy:
   stage: deploy
@@ -28,4 +28,3 @@ Prod:Deploy:
   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     exists:
       - $HELM_PROD_VALUES_FILE
-    when: manual
