@@ -1,6 +1,6 @@
 include:
   - local: build_arm.yml
-  # - local: trivy-scan.yml
+  - local: trivy-scan.yml
   - local: deploy.yml
-  # - local: purge_cache.yml
-  # - local: kube-score.yml
+  - local: purge_cache.yml
+  - local: kube-score.yml
