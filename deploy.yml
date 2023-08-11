@@ -12,7 +12,7 @@ Stage:Deploy:
   needs:
     - Build
   rules:
-  - if: $CI_COMMIT_BRANCH == "stage"
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 Prod:Deploy:
   stage: deploy
@@ -28,3 +28,4 @@ Prod:Deploy:
   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     exists:
       - $HELM_PROD_VALUES_FILE
+      - $CI_COMMIT_TAG
