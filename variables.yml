@@ -2,7 +2,7 @@ variables:
   GITLAB_BASE_URL: "gitlab.com"
   RUNNER_TAG: ""
   CI_CD_DOCKER_IMAGE_NAME: "registry.${GITLAB_BASE_URL}/from-the-lamp/infra/docker-images/cicd-arm"
-  CI_CD_DOCKER_IMAGE_VERSION: "1f5b53a4"
+  CI_CD_DOCKER_IMAGE_VERSION: "78bf436c"
   REGISTRY_HOST: "${CI_REGISTRY}"
   REGISTRY_USER: "${CI_REGISTRY_USER}"
   REGISTRY_PASSWORD: "${CI_REGISTRY_PASSWORD}"
@@ -27,3 +27,6 @@ variables:
   HELM_TIMEOUT: "1m30s"
   HELM_ADDITIONAL_SETTINGS: ""
   TF_VAR_gitlab_token: "${CI_JOB_TOKEN}"
+  ARGOCD_HOST: https://argocd.from-the-lamp.work
+  ARGOCD_USERNAME: admin
+  ARGOCD_PASSWORD: ""
