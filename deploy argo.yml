@@ -1,0 +1,13 @@
+include:
+  - local: functions/update_argocd_app.yml
+
+Stage:Deploy:
+  stage: deploy
+  extends: .deploy
+  environment:
+    name: stage
+    url: https://from-the-lamp.work
+  needs:
+    - Build
+  rules:
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
