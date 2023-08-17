@@ -4,7 +4,7 @@ include:
 .build:
   stage: build
   variables:
-    KANIKO_IMAGE_TAG: v1.9.1-debug
+    KANIKO_IMAGE_TAG: v1.14.0-debug
   image:
     name: gcr.io/kaniko-project/executor:${KANIKO_IMAGE_TAG}
     entrypoint: [""]
