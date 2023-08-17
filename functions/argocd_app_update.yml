@@ -8,6 +8,6 @@ include:
     - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
   script:
   - argocd login $ARGOCD_HOST --username $ARGOCD_USERNAME --password $ARGOCD_PASSWORD --grpc-web
-  - argocd app set $CI_PROJECT_NAMESPACE/$HELM_RELEASE_NAME -p image.tag=$DOCKER_IMAGE_TAG
+  - argocd app set from-the-lamp/$HELM_RELEASE_NAME -p image.tag=$DOCKER_IMAGE_TAG
   tags: 
   - $RUNNER_TAG
