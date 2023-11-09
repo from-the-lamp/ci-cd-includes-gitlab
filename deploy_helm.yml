@@ -1,24 +1,25 @@
 include:
   - local: functions/install_helm_chart.yml
 
-Stage:Deploy:
-  stage: deploy
-  extends: .deploy
-  variables:
-    KUBECONFIG_BASE64: ${stage_KUBECONFIG_BASE64}
-  environment:
-    name: stage
-    url: https://from-the-lamp.work
-  needs:
-    - Build
-  rules:
-  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+# Stage:Deploy:
+#   stage: deploy
+#   extends: .deploy
+#   variables:
+#     KUBECONFIG_BASE64: ${stage_KUBECONFIG_BASE64}
+#   environment:
+#     name: stage
+#     url: https://from-the-lamp.work
+#   needs:
+#     - Build
+#   rules:
+#   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 Prod:Deploy:
   stage: deploy
   extends: .deploy
   variables:
     KUBECONFIG_BASE64: ${prod_KUBECONFIG_BASE64}
+    HELM_VALUES_FILE: "values.yml"
   environment:
     name: prod
     url: https://from-the-lamp.com
