@@ -4,3 +4,7 @@ include:
   - local: deploy_helm.yml
   # - local: purge_cache.yml
   # - local: kube-score.yml
+
+variables:
+  K8S_NAMESPACE: frontend
+  
