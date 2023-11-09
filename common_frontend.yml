@@ -1,7 +1,7 @@
 include:
   - local: build_arm.yml
   # - local: trivy-scan.yml
-  - local: deploy_helm.yml
+  - local: deploy_argo.yml
   # - local: purge_cache.yml
   # - local: kube-score.yml
 
