@@ -3,7 +3,5 @@ include:
 
 Kube:Manifest:Score:
   extends: .kube-score
-  needs:
-    - Deploy
   rules:
   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

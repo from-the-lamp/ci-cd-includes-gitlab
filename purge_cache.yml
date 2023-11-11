@@ -7,6 +7,6 @@ Cache:Purge:
     CLOUDFLARE_ZONE_ID: ${stage_CLOUDFLARE_ZONE_ID}
     CLOUDFLARE_API_TOKEN: ${stage_CLOUDFLARE_API_TOKEN}
   needs:
-    - Deploy
+  - Deploy
   rules:
   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

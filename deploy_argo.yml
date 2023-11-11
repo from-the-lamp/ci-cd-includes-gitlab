@@ -7,7 +7,5 @@ Deploy:
   environment:
     name: stage
     url: https://from-the-lamp.com
-  needs:
-    - Build
   rules:
   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
