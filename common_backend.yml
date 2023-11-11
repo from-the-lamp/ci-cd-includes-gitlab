@@ -1,6 +1,6 @@
 include:
   - local: build_arm.yml
-  - local: deploy.yml
+  - local: deploy_argo.yml
 
 variables:
   K8S_NAMESPACE: backend
