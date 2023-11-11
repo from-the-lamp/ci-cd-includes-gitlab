@@ -1,22 +1,12 @@
 include:
   - local: functions/cloudflare_purge_cache.yml
 
-Stage:purge-cache:
+Cache:Purge:
   extends: .purge_all
   variables:
     CLOUDFLARE_ZONE_ID: ${stage_CLOUDFLARE_ZONE_ID}
     CLOUDFLARE_API_TOKEN: ${stage_CLOUDFLARE_API_TOKEN}
   needs:
-    - Stage:Deploy
+    - Deploy
   rules:
   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-
-Prod:purge-cache:
-  extends: .purge_all
-  variables:
-    CLOUDFLARE_ZONE_ID: ${prod_CLOUDFLARE_ZONE_ID}
-    CLOUDFLARE_API_TOKEN: ${prod_CLOUDFLARE_API_TOKEN}
-  needs:
-    - Prod:Deploy
-  rules:
-  - if: $CI_COMMIT_TAG
