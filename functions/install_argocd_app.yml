@@ -11,7 +11,7 @@ include:
   - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
   script:
   - |
-    cat <<EOF 
+    cat <<EOF | argocd app create --upsert --grpc-web \
     --server ${ARGOCD_HOST} --auth-token ${ARGOCD_TOKEN} \
     --file -
     apiVersion: argoproj.io/v1alpha1
@@ -51,6 +51,6 @@ include:
         jsonPointers:
         - /spec/duration
         - /spec/renewBefore
-    EOF | echo
+    EOF
   tags: 
   - ${RUNNER_TAG}
