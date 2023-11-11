@@ -11,7 +11,7 @@ include:
   - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
   script:
   - |
-    cat <<EOF | argocd app create --upsert --grpc-web \
+    cat <<EOF | tee /dev/stderr | argocd app create --upsert --grpc-web \
     --server ${ARGOCD_HOST} --auth-token ${ARGOCD_TOKEN} \
     --file -
     apiVersion: argoproj.io/v1alpha1
