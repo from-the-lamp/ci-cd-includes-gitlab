@@ -19,6 +19,7 @@ include:
     metadata:
       name: ${K8S_NAMESPACE}-${HELM_RELEASE_NAME}
       namespace: infra
+      project: ${ARGOCD_APP_PROJECT}
       finalizers:
       - resources-finalizer.argocd.argoproj.io
     spec:

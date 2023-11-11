@@ -7,4 +7,4 @@ include:
 
 variables:
   K8S_NAMESPACE: frontend
-  
+  ARGOCD_APP_PROJECT: ${K8S_NAMESPACE}
