@@ -25,5 +25,6 @@ variables:
   HELM_VALUES_FILE: "values.yml"
   HELM_TIMEOUT: "1m30s"
   HELM_ADDITIONAL_SETTINGS: ""
+  HELM_SECRET_VALUES_FILE: ""
   TF_VAR_gitlab_token: "${CI_JOB_TOKEN}"
   ARGOCD_HOST: "argocd.from-the-lamp.work"
