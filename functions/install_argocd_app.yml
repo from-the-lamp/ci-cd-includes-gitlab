@@ -18,7 +18,6 @@ include:
     metadata:
       name: ${K8S_NAMESPACE}-${HELM_RELEASE_NAME}
       namespace: infra
-      project: ${ARGOCD_APP_PROJECT}
       finalizers:
       - resources-finalizer.argocd.argoproj.io
     spec:
@@ -36,6 +35,7 @@ include:
       - ref: values
         repoURL: https://${CI_DEPLOY_USER}:${CI_DEPLOY_PASSWORD}@${GITLAB_BASE_URL}/${CI_PROJECT_PATH}.git
         targetRevision: ${HELM_VALUES_BRANCH}
+      project: ${ARGOCD_APP_PROJECT}
       destination:
         name: ${ARGOCD_APP_DEST_CLUSTER_NAME}
         namespace: ${K8S_NAMESPACE}
