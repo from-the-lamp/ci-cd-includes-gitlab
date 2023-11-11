@@ -28,3 +28,8 @@ variables:
   HELM_SECRET_VALUES_FILE: "SECRET_VALUES_FILE"
   TF_VAR_gitlab_token: "${CI_JOB_TOKEN}"
   ARGOCD_HOST: "argocd.from-the-lamp.work"
+  ARGOCD_APP_PARAMS: |
+  - name: global.image.name
+    value: ${DOCKER_IMAGE_NAME}
+  - name: global.image.tag
+    value: ${DOCKER_IMAGE_TAG}

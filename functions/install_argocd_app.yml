@@ -12,7 +12,7 @@ include:
   - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
   script:
   - |
-    cat <<EOF | argocd app create test --upsert --grpc-web \
+    cat <<EOF 
     --server ${ARGOCD_HOST} --auth-token ${ARGOCD_TOKEN} \
     --file -
     apiVersion: argoproj.io/v1alpha1
@@ -29,14 +29,6 @@ include:
         helm:
           releaseName: ${HELM_RELEASE_NAME}
           parameters:
-          - name: nodeSelector.node-env
-            value: ${K8S_NAMESPACE}
-          - name: global.image.name
-            value: ${DOCKER_IMAGE_NAME}
-          - name: global.image.tag
-            value: ${DOCKER_IMAGE_TAG}
-          - name: gateway.hosts[0]
-            value: ${GATEWAY_HOST}
     $(echo "$ARGOCD_APP_PARAMS" | awk '{ print "      " $0 }')
           valueFiles:
           - \$values/values.yml
@@ -60,6 +52,6 @@ include:
         jsonPointers:
         - /spec/duration
         - /spec/renewBefore
-    EOF
+    EOF | echo
   tags: 
   - ${RUNNER_TAG}
