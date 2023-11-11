@@ -31,7 +31,7 @@ include:
     $(echo "$ARGOCD_APP_PARAMS" | awk '{ print "      " $0 }')
           valueFiles:
           - \$values/values.yml
-        repoURL: https://${HELM_REPO_USER}:${HELM_REPO_PASS}@${GITLAB_BASE_URL}/api/v4/projects/${HELM_INTERNAL_REPO_ID}/packages/helm/${HELM_CHART_CHANNEL}
+        repoURL: https://${GITLAB_BASE_URL}/api/v4/projects/${HELM_INTERNAL_REPO_ID}/packages/helm/${HELM_CHART_CHANNEL}
         targetRevision: ${HELM_CHART_VERSION}
       - ref: values
         repoURL: https://${CI_DEPLOY_USER}:${CI_DEPLOY_PASSWORD}@${GITLAB_BASE_URL}/${CI_PROJECT_PATH}.git
