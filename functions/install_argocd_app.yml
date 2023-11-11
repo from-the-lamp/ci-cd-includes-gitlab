@@ -7,7 +7,6 @@ include:
   variables:
     DESTINATION_CLUSTER_NAME: "in-cluster"
     HELM_VALUES_BRANCH: "main"
-    KUBECONFIG_PATH: /tmp/kubeconfig
   before_script:
   - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
   script:
