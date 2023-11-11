@@ -5,7 +5,6 @@ include:
   stage: deploy
   image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
   variables:
-    DESTINATION_CLUSTER_NAME: "in-cluster"
     HELM_VALUES_BRANCH: "main"
   before_script:
   - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
@@ -38,7 +37,7 @@ include:
         repoURL: https://${CI_DEPLOY_USER}:${CI_DEPLOY_PASSWORD}@${GITLAB_BASE_URL}/${CI_PROJECT_PATH}.git
         targetRevision: ${HELM_VALUES_BRANCH}
       destination:
-        name: ${DESTINATION_CLUSTER_NAME}
+        name: ${ARGOCD_APP_DEST_CLUSTER_NAME}
         namespace: ${K8S_NAMESPACE}
       syncPolicy:
         automated:
