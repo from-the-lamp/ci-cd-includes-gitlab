@@ -43,6 +43,11 @@ include:
         automated:
           prune: true 
           selfHeal: true
+        managedNamespaceMetadata:
+            labels:
+              istio-injection: enabled
+        syncOptions:
+        - CreateNamespace=true
       ignoreDifferences:
       - group: cert-manager.io
         kind: Certificate
