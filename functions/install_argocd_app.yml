@@ -13,7 +13,7 @@ include:
   script:
   - |
     cat <<EOF | argocd app create test --upsert --grpc-web \
-    --server ${ARGOCD_SERVER} --auth-token ${ARGOCD_TOKEN} \
+    --server ${ARGOCD_HOST} --auth-token ${ARGOCD_TOKEN} \
     --file -
     apiVersion: argoproj.io/v1alpha1
     kind: Application
