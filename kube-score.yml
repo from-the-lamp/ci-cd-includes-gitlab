@@ -1,7 +1,7 @@
 include:
   - local: functions/kube-score.yml
 
-Kube:Score:
+Kube:Manifest:Score:
   extends: .kube-score
   needs:
     - Deploy
