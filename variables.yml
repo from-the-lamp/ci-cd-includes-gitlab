@@ -26,4 +26,4 @@ variables:
   HELM_TIMEOUT: "1m30s"
   HELM_ADDITIONAL_SETTINGS: ""
   TF_VAR_gitlab_token: "${CI_JOB_TOKEN}"
-  ARGOCD_HOST: "argocd.from-the-lamp.com"
+  ARGOCD_HOST: "argocd.from-the-lamp.work"
