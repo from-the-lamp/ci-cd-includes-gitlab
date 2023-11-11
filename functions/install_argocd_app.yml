@@ -1,0 +1,65 @@
+include:
+  - local: variables.yml
+
+.deploy:
+  stage: deploy
+  image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
+  variables:
+    DESTINATION_CLUSTER_NAME: "in-cluster"
+    HELM_VALUES_BRANCH: "main"
+    KUBECONFIG_PATH: /tmp/kubeconfig
+  before_script:
+  - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
+  script:
+  - |
+    cat <<EOF | argocd app create test --upsert --grpc-web \
+    --server ${ARGOCD_SERVER} --auth-token ${ARGOCD_TOKEN} --loglevel ${ARGOCD_LOG_LEVEL} \
+    --file -
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: ${K8S_NAMESPACE}-${HELM_RELEASE_NAME}
+      namespace: infra
+      finalizers:
+      - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: default
+      sources:
+      - chart: base
+        helm:
+          releaseName: ${HELM_RELEASE_NAME}
+          parameters:
+          - name: nodeSelector.node-env
+            value: ${K8S_NAMESPACE}
+          - name: global.image.name
+            value: ${DOCKER_IMAGE_NAME}
+          - name: global.image.tag
+            value: ${DOCKER_IMAGE_TAG}
+          - name: gateway.hosts[0]
+            value: ${GATEWAY_HOST}
+    $(echo "$ARGOCD_APP_PARAMS" | awk '{ print "      " $0 }')
+          valueFiles:
+          - \$values/values.yml
+          values: |
+    $(awk '{ print "        " $0 }' ${!HELM_SECRET_VALUES_FILE})
+        repoURL: https://${HELM_REPO_USER}:${HELM_REPO_PASS}@${GITLAB_BASE_URL}/api/v4/projects/${HELM_INTERNAL_REPO_ID}/packages/helm/${HELM_CHART_CHANNEL}
+        targetRevision: ${HELM_CHART_VERSION}
+      - ref: values
+        repoURL: https://${CI_DEPLOY_USER}:${CI_DEPLOY_PASSWORD}@${GITLAB_BASE_URL}/${CI_PROJECT_PATH}.git
+        targetRevision: ${HELM_VALUES_BRANCH}
+      destination:
+        name: ${DESTINATION_CLUSTER_NAME}
+        namespace: ${K8S_NAMESPACE}
+      syncPolicy:
+        automated:
+          prune: true 
+          selfHeal: true
+      ignoreDifferences:
+      - group: cert-manager.io
+        kind: Certificate
+        jsonPointers:
+        - /spec/duration
+        - /spec/renewBefore
+    EOF
+  tags: 
+  - ${RUNNER_TAG}

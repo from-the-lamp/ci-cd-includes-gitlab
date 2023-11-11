@@ -1,5 +1,5 @@
 include:
-  - local: functions/argocd_app_update.yml
+  - local: functions/install_argocd_app.yml
 
 Stage:Deploy:
   stage: deploy
