@@ -27,7 +27,6 @@ variables:
   HELM_ADDITIONAL_SETTINGS: ""
   TF_VAR_gitlab_token: "${CI_JOB_TOKEN}"
   ARGOCD_HOST: "argocd.from-the-lamp.work"
-crossplane:
   workspaces:
     vault:
       enabled: true
