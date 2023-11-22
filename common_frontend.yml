@@ -16,5 +16,7 @@ variables:
       value: "${DOCKER_IMAGE_TAG}"
     - name: global.version
       value: "${DOCKER_IMAGE_TAG}"
-    - name: crossplane.workspaces.vault.vars.secret_path
+    - name: crossplane.workspaces.vault.vars[0].key
+      value: "secret_path"
+    - name: crossplane.workspaces.vault.vars[0].value
       value: "${K8S_NAMESPACE}/${HELM_RELEASE_NAME}"
