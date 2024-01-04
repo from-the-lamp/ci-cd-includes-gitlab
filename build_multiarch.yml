@@ -5,11 +5,10 @@ include:
 Build:MultiArch:
   image:
     name: mplatform/manifest-tool
-    entrypoint: [""]
   variables: 
     DOCKER_IMAGE_TAG: "${CI_COMMIT_SHORT_SHA}"
   script:
-  - manifest-tool --username "${REGISTRY_USER}" --password "${REGISTRY_PASSWORD}" push from-args
+  - --username "${REGISTRY_USER}" --password "${REGISTRY_PASSWORD}" push from-args
     --platforms linux/amd64,linux/arm64
     --template ${DOCKER_IMAGE_NAME}-ARCH:${DOCKER_IMAGE_TAG}
     --target ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
