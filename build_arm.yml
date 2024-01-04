@@ -1,6 +1,0 @@
-include:
-  - local: build.yml
-
-Build:
-  variables:
-    BUILD_ADDITION: "--custom-platform linux/arm/v7"

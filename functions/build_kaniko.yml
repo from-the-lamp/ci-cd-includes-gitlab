@@ -4,7 +4,8 @@ include:
 .build:
   stage: build
   variables:
-    KANIKO_IMAGE_TAG: v1.18.0-debug
+    DOCKER_IMAGE_NAME: "${CI_REGISTRY_IMAGE}-${ARCH}"
+    KUBERNETES_NODE_SELECTOR_ARCH: "kubernetes.io/arch=${ARCH}"
   image:
     name: gcr.io/kaniko-project/executor:${KANIKO_IMAGE_TAG}
     entrypoint: [""]

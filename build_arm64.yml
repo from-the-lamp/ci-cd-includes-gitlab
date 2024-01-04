@@ -1,0 +1,7 @@
+include:
+  - local: functions/build_kaniko.yml
+
+Build:ARM64:
+  extends: .build
+  variables:
+    ARCH: "arm64"

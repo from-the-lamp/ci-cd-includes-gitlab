@@ -1,0 +1,15 @@
+include:
+  - local: build_amd64.yml
+  - local: build_arm64.yml
+
+Build:MultiArch:
+  image:
+    name: mplatform/manifest-tool
+    entrypoint: [""]
+  variables: 
+    DOCKER_IMAGE_NAME: "${CI_REGISTRY_IMAGE}"
+  script:
+  - manifest-tool --username "${REGISTRY_USER}" --password "${REGISTRY_PASSWORD}" push from-args
+    --platforms linux/amd64,linux/arm64
+    --template ${DOCKER_IMAGE_NAME}-ARCH:${DOCKER_IMAGE_TAG}
+    --target ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
