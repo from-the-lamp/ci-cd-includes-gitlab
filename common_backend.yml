@@ -1,5 +1,5 @@
 include:
-  - local: build_arm.yml
+  - local: build_multiarch.yml
   - local: trivy-scan.yml
   - local: deploy_argo.yml
   - local: purge_cache.yml
