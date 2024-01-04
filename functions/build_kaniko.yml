@@ -17,7 +17,6 @@ include:
       --context $DOCKER_BUILD_CONTEXT 
       --dockerfile $CI_PROJECT_DIR/$DOCKER_FILE_PATH 
       --destination $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
-      --destination $DOCKER_IMAGE_NAME:latest
       --cache=true
       $BUILD_ARGS
       $BUILD_ADDITION
