@@ -7,7 +7,7 @@ Build:MultiArch:
     name: mplatform/manifest-tool
     entrypoint: [""]
   variables: 
-    DOCKER_IMAGE_NAME: "${CI_REGISTRY_IMAGE}"
+    DOCKER_IMAGE_TAG: "${CI_COMMIT_SHORT_SHA}"
   script:
   - manifest-tool --username "${REGISTRY_USER}" --password "${REGISTRY_PASSWORD}" push from-args
     --platforms linux/amd64,linux/arm64

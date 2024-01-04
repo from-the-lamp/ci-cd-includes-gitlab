@@ -4,7 +4,7 @@ include:
 .build:
   stage: build
   variables:
-    DOCKER_IMAGE_NAME: "${CI_REGISTRY_IMAGE}-${ARCH}"
+    DOCKER_IMAGE_TAG: "${CI_COMMIT_SHORT_SHA}-${ARCH}"
     KUBERNETES_NODE_SELECTOR_ARCH: "kubernetes.io/arch=${ARCH}"
     KANIKO_IMAGE_TAG: v1.18.0-debug
   image:
