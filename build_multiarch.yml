@@ -17,4 +17,4 @@ Build:MultiArch:
     --template ${DOCKER_IMAGE_NAME}:ARCH-${DOCKER_IMAGE_TAG}
     --target ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
   after_script: 
-  - echo "Image - ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
+  - echo "${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
