@@ -5,3 +5,4 @@ Build:ARM64:
   extends: .build
   variables:
     ARCH: "arm64"
+    RUNNER_TAG: "micro-arm64"
