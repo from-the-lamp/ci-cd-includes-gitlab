@@ -16,3 +16,6 @@ include:
     --file ${APP_FILE_PATH}
   tags: 
   - $RUNNER_TAG
+  rules:
+    - changes: 
+      - ${APP_FILE_PATH}
