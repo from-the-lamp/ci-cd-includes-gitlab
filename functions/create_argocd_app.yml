@@ -1,0 +1,18 @@
+
+include:
+  - local: variables.yml
+
+Create:
+  stage: deploy
+  image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
+  variables:
+    SYNC_POLICY: automated
+    APP_FILE_PATH: common/infra.yml
+  script:
+  - |
+    argocd app create --upsert --grpc-web \
+    --server ${ARGOCD_HOST} --auth-token ${ARGOCD_TOKEN} \
+    --sync-policy ${SYNC_POLICY} \
+    --file ${APP_FILE_PATH}
+  tags: 
+  - $RUNNER_TAG
