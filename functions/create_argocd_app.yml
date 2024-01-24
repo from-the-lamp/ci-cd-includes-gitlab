@@ -9,9 +9,9 @@ include:
     SYNC_POLICY: automated
     APP_FILE_PATH: ""
   script:
+  - argocd login --core
   - |
-    argocd app create --upsert --grpc-web \
-    --server ${ARGOCD_HOST} --auth-token ${ARGOCD_TOKEN} \
+    argocd app create --upsert \
     --sync-policy ${SYNC_POLICY} \
     --file ${APP_FILE_PATH}
   tags: 
