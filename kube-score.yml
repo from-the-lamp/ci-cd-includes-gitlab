@@ -1,7 +1,0 @@
-include:
-  - local: functions/kube-score.yml
-
-Kube:Manifest:Score:
-  extends: .kube-score
-  rules:
-  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
