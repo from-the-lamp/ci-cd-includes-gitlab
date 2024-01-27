@@ -24,7 +24,7 @@ include:
         certificate-authority: ${CA_PATH}
         server: ${KUBERNETES_API}
     contexts:
-    - name: kunernetes
+    - name: kubernetes
       context:
         cluster: default
         namespace: argocd
