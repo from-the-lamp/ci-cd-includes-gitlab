@@ -8,6 +8,34 @@ include:
   variables:
     SYNC_POLICY: automated
     APP_FILE_PATH: ""
+  before_script:
+  - mkdir $HOME/.kube
+  - |
+    #!/usr/bin/env bash
+    TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+    CA_PATH="/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
+    KUBERNETES_API="https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"
+    cat <<EOF > $HOME/.kube/config
+    apiVersion: v1
+    kind: Config
+    clusters:
+    - name: default
+      cluster:
+        certificate-authority: ${CA_PATH}
+        server: ${KUBERNETES_API}
+    contexts:
+    - name: kunernetes
+      context:
+        cluster: default
+        namespace: argocd
+        user: default
+    current-context: kubernetes
+    users:
+    - name: default
+      user:
+        token: ${TOKEN}
+    EOF
+  - export KUBECONFIG=$HOME/.kube/config
   script:
   - |
     argocd app create --core --upsert \
