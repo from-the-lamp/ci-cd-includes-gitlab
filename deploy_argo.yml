@@ -1,11 +1,9 @@
 include:
-  - local: functions/install_argocd_app.yml
+  - local: functions/argocd_create_core.yml
 
-Deploy:
+Create:Appset:
   stage: deploy
-  extends: .deploy
-  environment:
-    name: prod
-    url: https://from-the-lamp.com
-  rules:
-  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  extends: .create
+  variables:
+    APP_TYPE: appset
+    APP_FILE_PATH: applicationset.yml

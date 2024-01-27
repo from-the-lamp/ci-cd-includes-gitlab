@@ -8,6 +8,7 @@ include:
   variables:
     SYNC_POLICY: automated
     APP_FILE_PATH: ""
+    APP_TYPE: "app"
   before_script:
   - mkdir $HOME/.kube
   - |
@@ -38,7 +39,7 @@ include:
   - export KUBECONFIG=$HOME/.kube/config
   script:
   - |
-    argocd app create --core --upsert \
+    argocd $APP_TYPE create --core --upsert \
     --file ${APP_FILE_PATH}
   tags: 
   - $RUNNER_TAG
