@@ -1,7 +1,7 @@
 include:
-  - local: functions/trivy-scan.yml
+  - local: functions/imageScan-trivy.yml
 
-Image:Scan:Trivy:
+ImageScan:Trivy:
   extends: .scan
   rules:
   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
