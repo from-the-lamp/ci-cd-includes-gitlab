@@ -2,7 +2,6 @@ include:
   - local: functions/install_helm_chart.yml
 
 Prod:Deploy:
-  stage: deploy
   extends: .deploy
   variables:
     KUBECONFIG_BASE64: ${prod_KUBECONFIG_BASE64}
