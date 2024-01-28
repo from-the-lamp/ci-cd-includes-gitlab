@@ -16,7 +16,7 @@ Build:MultiArch:
   - ./manifest-tool --username "${REGISTRY_USER}" --password "${REGISTRY_PASSWORD}" push from-args
     --platforms linux/amd64,linux/arm64
     --template ${DOCKER_IMAGE_NAME}:ARCH-${DOCKER_IMAGE_TAG}
-    --target ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+    --target ${DOCKER_IMAGE_NAME}:latest #FIXME
   after_script: 
   - echo "${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
   needs: 
