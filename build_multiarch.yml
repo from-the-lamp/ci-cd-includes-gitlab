@@ -3,6 +3,7 @@ include:
   - local: build_arm64.yml
 
 Build:MultiArch:
+  stage: Prepare
   image:
     name: curlimages/curl:latest
   variables:
