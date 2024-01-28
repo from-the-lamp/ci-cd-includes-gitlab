@@ -1,6 +1,6 @@
 variables:
   GITLAB_BASE_URL: "gitlab.com"
-  RUNNER_TAG: ""
+  RUNNER_TAG: "saas-linux-large-amd64"
   CI_CD_DOCKER_IMAGE_NAME: "registry.${GITLAB_BASE_URL}/from-the-lamp/infra/docker-images/cicd-arm"
   CI_CD_DOCKER_IMAGE_VERSION: "0463a597"
   REGISTRY_HOST: "${CI_REGISTRY}"
