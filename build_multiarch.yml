@@ -22,3 +22,5 @@ Build:MultiArch:
   needs: 
   - Build:AMD64
   - Build:ARM64
+  tags: 
+  - $RUNNER_TAG
