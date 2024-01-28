@@ -8,3 +8,5 @@ Create:Appset:
     RUNNER_TAG: micro-arm64
     APP_TYPE: appset
     APP_FILE_PATH: applicationset.yml
+  needs: 
+  - Build:MultiArch

@@ -1,2 +1,0 @@
-include:
-  - local: build_arm.yml

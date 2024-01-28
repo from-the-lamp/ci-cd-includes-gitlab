@@ -2,7 +2,7 @@ include:
   - local: variables.yml
 
 .deploy:
-  stage: deploy
+  stage: Deploy
   image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
   before_script:
     - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)

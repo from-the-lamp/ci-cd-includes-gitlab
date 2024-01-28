@@ -3,7 +3,7 @@ include:
   - local: variables.yml
 
 .create:
-  stage: deploy
+  stage: Deploy
   image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
   variables:
     SYNC_POLICY: automated

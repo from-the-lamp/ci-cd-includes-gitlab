@@ -3,18 +3,7 @@ include:
   - local: trivy-scan.yml
   - local: deploy_argo.yml
 
-variables:
-  K8S_NAMESPACE: frontend
-  ARGOCD_APP_PROJECT: ${K8S_NAMESPACE}
-  ARGOCD_APP_DEST_CLUSTER_NAME: prod
-  ARGOCD_APP_PARAMS: |
-    - name: global.image.name
-      value: "${DOCKER_IMAGE_NAME}"
-    - name: global.image.tag
-      value: "${DOCKER_IMAGE_TAG}"
-    - name: global.version
-      value: "${DOCKER_IMAGE_TAG}"
-    - name: crossplane.workspaces.vault.vars[0].key
-      value: "secret_path"
-    - name: crossplane.workspaces.vault.vars[0].value
-      value: "${K8S_NAMESPACE}/${HELM_RELEASE_NAME}"
+stages:
+  - Build
+  - Prepare
+  - Deploy

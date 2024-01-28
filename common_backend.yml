@@ -3,7 +3,7 @@ include:
   - local: trivy-scan.yml
   - local: deploy_argo.yml
   
-variables:
-  K8S_NAMESPACE: backend
-  ARGOCD_APP_PROJECT: ${K8S_NAMESPACE}
-  ARGOCD_APP_DEST_CLUSTER_NAME: prod
+stages:
+  - Build
+  - Prepare
+  - Deploy

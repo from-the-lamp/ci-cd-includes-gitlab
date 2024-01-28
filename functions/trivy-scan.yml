@@ -2,7 +2,7 @@ include:
   - local: variables.yml
 
 .scan:
-  stage: .post
+  stage: Prepare
   image: 
     name: aquasec/trivy:latest
     entrypoint: ["/bin/sh", "-c"]

@@ -2,10 +2,10 @@ include:
   - local: 'variables.yml'
 
 stages:
-  - push
+  - Push
   
 .push:
-  stage: push
+  stage: Push
   image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
   script:
     - helm repo add --username ${HELM_REPO_USER} --password ${HELM_REPO_PASS} ${HELM_REPO_NAME} ${HELM_REPO_URL}
