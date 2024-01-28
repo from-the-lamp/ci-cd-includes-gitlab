@@ -7,6 +7,7 @@ Build:MultiArch:
   image:
     name: curlimages/curl:latest
   variables:
+    RUNNER_TAG: saas-windows-medium-amd64
     MANIFEST_TOOL_URL: https://github.com/estesp/manifest-tool/releases/download/v2.1.5/binaries-manifest-tool-2.1.5.tar.gz
   before_script: 
     - curl -s -L $MANIFEST_TOOL_URL | tar xvz
