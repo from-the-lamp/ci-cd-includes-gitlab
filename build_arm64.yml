@@ -6,3 +6,4 @@ Build:ARM64:
   variables:
     ARCH: "arm64"
     RUNNER_TAG: "micro-arm64"
+    KUBERNETES_NODE_SELECTOR_ARCH: "kubernetes.io/arch=${ARCH}"
