@@ -12,7 +12,6 @@ include:
   before_script:
   - mkdir $HOME/.kube
   - |
-    #!/usr/bin/env bash
     TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
     CA_PATH="/var/run/secrets/kubernetes.io/serviceaccount/ca.crt"
     KUBERNETES_API="https://${KUBERNETES_SERVICE_HOST}:${KUBERNETES_SERVICE_PORT}"
@@ -39,8 +38,14 @@ include:
   - export KUBECONFIG=$HOME/.kube/config
   script:
   - |
-    argocd $APP_TYPE create --core --upsert \
-    --file ${APP_FILE_PATH}
+    if [ "$APP_TYPE" == "app" ]; then
+        argocd app create --core --upsert --file ${APP_FILE_PATH}
+    elif [ "$APP_TYPE" == "appset" ]; then
+        argocd appset create ${APP_FILE_PATH} --upset
+    else
+        echo "Unknown APP_TYPE: $APP_TYPE"
+        exit 1
+    fi
   tags: 
   - $RUNNER_TAG
   rules:
