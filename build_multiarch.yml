@@ -7,10 +7,11 @@ Build:MultiArch:
   image:
     name: curlimages/curl:latest
   variables:
+    RUNNER_TAG: "micro-arm64"
     MANIFEST_TOOL_URL: https://github.com/estesp/manifest-tool/releases/download/v2.1.5/binaries-manifest-tool-2.1.5.tar.gz
   before_script: 
     - curl -s -L $MANIFEST_TOOL_URL | tar xvz
-    - mv manifest-tool-linux-amd64 manifest-tool
+    - mv manifest-tool-linux-arm64 manifest-tool
     - chmod +x manifest-tool
   script:
   - ./manifest-tool --username "${REGISTRY_USER}" --password "${REGISTRY_PASSWORD}" push from-args

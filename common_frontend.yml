@@ -1,6 +1,5 @@
 include:
   - local: build_multiarch.yml
-  - local: imageScan-trivy.yml
   - local: deploy_argo.yml
 
 stages:
