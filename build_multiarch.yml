@@ -19,3 +19,6 @@ Build:MultiArch:
     --target ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
   after_script: 
   - echo "${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
+  needs: 
+  - Build:AMD64
+  - Build:ARM64
