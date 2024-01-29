@@ -8,6 +8,7 @@ include:
   variables:
     SYNC_POLICY: automated
     APP_FILE_PATH: ""
+    CHANGES_FILE_PATH: ""
     APP_TYPE: "app"
   before_script:
   - mkdir $HOME/.kube
@@ -50,4 +51,4 @@ include:
   - $RUNNER_TAG
   rules:
     - changes: 
-      - ${APP_FILE_PATH}
+      - ${CHANGES_FILE_PATH}
