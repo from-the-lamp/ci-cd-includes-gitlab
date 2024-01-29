@@ -7,8 +7,8 @@ include:
   image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
   variables:
     SYNC_POLICY: automated
-    APP_FILE_PATH: ""
-    CHANGES_FILE_PATH: ""
+    #APP_FILE_PATH: ""
+    #CHANGES_FILE_PATH: ""
     APP_TYPE: "app"
   before_script:
   - mkdir $HOME/.kube
