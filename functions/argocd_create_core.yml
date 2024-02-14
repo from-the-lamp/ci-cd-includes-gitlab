@@ -49,6 +49,3 @@ include:
     fi
   tags: 
   - $RUNNER_TAG
-  rules:
-    - changes: 
-      - ${CHANGES_FILE_PATH}
