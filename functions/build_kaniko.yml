@@ -5,9 +5,8 @@ include:
   stage: Build
   variables:
     DOCKER_IMAGE_TAG: "${ARCH}-${CI_COMMIT_SHORT_SHA}"
-    KANIKO_IMAGE_TAG: v1.19.2-debug
   image:
-    name: gcr.io/kaniko-project/executor:${KANIKO_IMAGE_TAG}
+    name: gcr.io/kaniko-project/executor:v1.19.2-debug
     entrypoint: [""]
   script:
     - /kaniko/executor 

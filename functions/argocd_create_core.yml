@@ -4,7 +4,7 @@ include:
 
 .create:
   stage: Deploy
-  image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
+  image: quay.io/argoproj/argocd:v2.10.0
   variables:
     SYNC_POLICY: automated
     #APP_FILE_PATH: ""
