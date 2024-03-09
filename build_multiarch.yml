@@ -14,7 +14,7 @@ Build:MultiArch:
   - mv manifest-tool-linux-amd64 manifest-tool
   - chmod +x manifest-tool
   script:
-  - ./manifest-tool --username "${REGISTRY_USER}" --password "${REGISTRY_PASSWORD:}" push from-args
+  - ./manifest-tool --username "${REGISTRY_USER}" --password "${REGISTRY_PASSWORD}" push from-args
     --platforms linux/amd64,linux/arm64
     --template ${DOCKER_IMAGE_NAME}:ARCH-${DOCKER_IMAGE_TAG_SHA}
     --target ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
