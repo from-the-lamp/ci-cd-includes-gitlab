@@ -8,7 +8,7 @@ Build:MultiArch:
     name: curlimages/curl:latest
   variables:
     MANIFEST_TOOL_URL: https://github.com/estesp/manifest-tool/releases/download/v2.1.5/binaries-manifest-tool-2.1.5.tar.gz
-    DOCKER_IMAGE_TAG_SHA: $CI_COMMIT_SHORT_SHA
+    DOCKER_IMAGE_TAG_SHA: ${CI_COMMIT_SHORT_SHA}
   before_script: 
   - curl -s -L $MANIFEST_TOOL_URL | tar xvz
   - mv manifest-tool-linux-amd64 manifest-tool
