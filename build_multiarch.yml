@@ -8,14 +8,15 @@ Build:MultiArch:
     name: curlimages/curl:latest
   variables:
     MANIFEST_TOOL_URL: https://github.com/estesp/manifest-tool/releases/download/v2.1.5/binaries-manifest-tool-2.1.5.tar.gz
+    DOCKER_IMAGE_TAG_SHA: $CI_COMMIT_SHORT_SHA
   before_script: 
   - curl -s -L $MANIFEST_TOOL_URL | tar xvz
   - mv manifest-tool-linux-amd64 manifest-tool
   - chmod +x manifest-tool
   script:
-  - ./manifest-tool --username "${REGISTRY_USER}" --password "${REGISTRY_PASSWORD}" push from-args
+  - ./manifest-tool --username "${REGISTRY_USER}" --password "${REGISTRY_PASSWORD:}" push from-args
     --platforms linux/amd64,linux/arm64
-    --template ${DOCKER_IMAGE_NAME}:ARCH-${DOCKER_IMAGE_TAG}
+    --template ${DOCKER_IMAGE_NAME}:ARCH-${DOCKER_IMAGE_TAG_SHA}
     --target ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
   after_script: 
   - echo "${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
