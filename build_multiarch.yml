@@ -24,3 +24,8 @@ Build:MultiArch:
   - Build:ARM64
   tags: 
   - $RUNNER_TAG
+
+Build:MultiArch:Latest:
+  extends: Build:MultiArch
+  variables:
+    DOCKER_IMAGE_TAG: latest
