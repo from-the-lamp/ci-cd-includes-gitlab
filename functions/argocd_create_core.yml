@@ -39,7 +39,7 @@ include:
   - export KUBECONFIG=$HOME/.kube/config
   script:
   - |
-    sed -i "s/tag: .*/tag: $DOCKER_IMAGE_TAG/" applicationset.yml || true
+    sed -i "s/tag: .*/tag: $(printf '%s' \"$DOCKER_IMAGE_TAG\")/" applicationset.yml || true
     if [ "$APP_TYPE" == "app" ]; then
         argocd app create --core --upsert --file ${APP_FILE_PATH}
     elif [ "$APP_TYPE" == "appset" ]; then
