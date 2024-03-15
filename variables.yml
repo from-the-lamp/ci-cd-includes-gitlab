@@ -25,3 +25,4 @@ variables:
   HELM_VALUES_FILE: "values.yml"
   HELM_TIMEOUT: "1m30s"
   HELM_ADDITIONAL_SETTINGS: ""
+  REPLACE_DOCKER_TAG: "false"
