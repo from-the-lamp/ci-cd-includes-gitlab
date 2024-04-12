@@ -1,5 +1,6 @@
 include:
   - local: build_multiarch.yml
+  - local: deploy_argo.yml
 
 stages:
   - Build

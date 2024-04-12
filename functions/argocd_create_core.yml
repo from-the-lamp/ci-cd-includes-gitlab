@@ -39,9 +39,6 @@ include:
   - export KUBECONFIG=$HOME/.kube/config
   script:
   - |
-    if [ "$REPLACE_DOCKER_TAG" == "true" ]; then
-      sed -i "s/tag: .*/tag: $DOCKER_IMAGE_TAG/" applicationset.yml
-    fi
     if [ "$APP_TYPE" == "app" ]; then
         argocd app create --core --upsert --file ${APP_FILE_PATH}
     elif [ "$APP_TYPE" == "appset" ]; then
