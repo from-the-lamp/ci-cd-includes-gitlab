@@ -19,7 +19,7 @@ variables:
   HELM_REPO_NAME: "infra"
   HELM_REPO_USER: "gitlab-ci-token"
   HELM_REPO_PASS: "${CI_JOB_TOKEN}"
-  HELM_REPO_URL: "registry.${GITLAB_BASE_URL}/from-the-lamp/infra/helm-charts"
+  HELM_REPO_URL: "oci://registry.${GITLAB_BASE_URL}/from-the-lamp/infra/helm-charts"
   HELM_RELEASE_NAME: "${CI_PROJECT_NAME}"
   HELM_CHART_VERSION: "0.1.23"
   HELM_VALUES_FILE: "values.yml"
