@@ -16,7 +16,7 @@ stages:
     - helm package ${FOLDER} --version ${CHART_VERSION}
     - |
       curl --request POST \
-        --form "${FOLDER}-${CHART_VERSION}.tgz" \
+        --form "chart=@${FOLDER}-${CHART_VERSION}.tgz" \
         --user ${HELM_REPO_USER}:${HELM_REPO_PASS} \
         ${HELM_REPO_URL}/charts
   after_script:
