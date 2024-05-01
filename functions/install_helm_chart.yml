@@ -3,7 +3,9 @@ include:
 
 .deploy:
   stage: Deploy
-  image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
+  image: 
+    name: alpine/helm:3.14.4
+    entrypoint: [""]
   before_script:
     - export HELM_RELEASE_NAME=$(echo $HELM_RELEASE_NAME | tr _ -)
   script:
