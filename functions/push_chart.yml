@@ -12,6 +12,7 @@ stages:
   script:
     - helm repo add --username ${HELM_REPO_USER} --password ${HELM_REPO_PASS} ${HELM_REPO_NAME} ${HELM_REPO_URL}
     - export CHART_VERSION=$(grep 'version:' ${FOLDER}/Chart.yaml | cut -d ' ' -f 2)
+    - helm dependency update ${FOLDER} 
     - helm package ${FOLDER} --version $CHART_VERSION
     - helm push ${FOLDER}-$CHART_VERSION.tgz ${HELM_REPO_NAME}
   after_script:
