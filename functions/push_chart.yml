@@ -14,11 +14,7 @@ stages:
     - export CHART_VERSION=$(grep 'version:' ${FOLDER}/Chart.yaml | cut -d ' ' -f 2)
     - helm dependency update ${FOLDER} 
     - helm package ${FOLDER} --version ${CHART_VERSION}
-    - |
-      curl --request POST \
-        --form "chart=@${FOLDER}-${CHART_VERSION}.tgz" \
-        --user ${HELM_REPO_USER}:${HELM_REPO_PASS} \
-        ${HELM_REPO_URL}/charts
+    - helm push ${FOLDER}-${CHART_VERSION}.tgz oci://${HELM_REPO_URL}
   after_script:
     - echo "HELM_REPO_URL=${HELM_REPO_URL}"
   rules:
