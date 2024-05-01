@@ -6,10 +6,14 @@ stages:
   
 .push:
   stage: Push
-  image: ${CI_CD_DOCKER_IMAGE_NAME}:${CI_CD_DOCKER_IMAGE_VERSION}
+  image: 
+    name: alpine/helm:3.14.4
+    entrypoint: [""]
   script:
     - helm repo add --username ${HELM_REPO_USER} --password ${HELM_REPO_PASS} ${HELM_REPO_NAME} ${HELM_REPO_URL}
-    - helm cm-push ./${FOLDER} ${HELM_REPO_NAME}
+    - export CHART_VERSION=$(grep 'version:' ${FOLDER}/Chart.yaml | cut -d ' ' -f 2)
+    - helm package ${FOLDER} --version $CHART_VERSION
+    - helm push ${FOLDER}-$CHART_VERSION.tgz ${HELM_REPO_NAME}
   after_script:
     - echo "HELM_REPO_URL=${HELM_REPO_URL}"
   rules:
