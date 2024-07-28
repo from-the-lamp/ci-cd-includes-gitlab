@@ -1,6 +1,2 @@
 include:
-  - local: build_multiarch.yml
-
-stages:
-  - Build
-  - Prepare
+  - local: build_kaniko_multiarch.yml

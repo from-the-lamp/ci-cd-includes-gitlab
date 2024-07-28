@@ -2,6 +2,10 @@ include:
   - local: build_amd64.yml
   - local: build_arm64.yml
 
+stages:
+  - Build
+  - Prepare
+
 Build:MultiArch:
   stage: Prepare
   image:
