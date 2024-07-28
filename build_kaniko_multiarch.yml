@@ -1,6 +1,6 @@
 include:
-  - local: build_amd64.yml
-  - local: build_arm64.yml
+  - local: build_kaniko_amd64.yml
+  - local: build_kaniko_amd64.yml
 
 stages:
   - Build
