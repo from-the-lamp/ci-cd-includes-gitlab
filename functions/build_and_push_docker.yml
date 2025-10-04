@@ -24,3 +24,5 @@
         --import-cache type=registry,ref=$OCI_CACHE \
         --opt platform=$OCI_PLATFORMS \
         --output type=image,name=$OCI_IMAGE:$OCI_TAG,push=true
+    - |
+      echo Image: $OCI_IMAGE:$OCI_TAG
