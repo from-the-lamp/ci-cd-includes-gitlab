@@ -1,5 +1,5 @@
 include:
-  - local: build_and_push_docker.yml
+  - local: functions/build_and_push_docker.yml
 
 stages:
   - Build
