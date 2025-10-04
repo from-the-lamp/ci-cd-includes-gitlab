@@ -1,0 +1,29 @@
+include:
+  - local: variables.yml
+
+.build:
+  stage: Build
+  image:
+    name: moby/buildkit:rootless
+    entrypoint: [""]
+  variables:
+    OCI_REGISTRY: $CI_REGISTRY
+    OCI_USER: $CI_REGISTRY_USER
+    OCI_PASS: $CI_REGISTRY_PASSWORD
+    OCI_IMAGE: $CI_REGISTRY_IMAGE
+    OCI_TAG: latest
+    OCI_CACHE: $CI_REGISTRY_IMAGE:cache
+    OCI_PLATFORMS: linux/amd64,linux/arm64
+  before_script:
+    - mkdir -p ~/.docker
+    - echo "{\"auths\":{\"$OCI_REGISTRY\":{\"username\":\"$OCI_USER\",\"password\":\"$OCI_PASS\"}}}" > ~/.docker/config.json
+  script:
+    - |
+      buildctl-daemonless.sh build \
+        --frontend dockerfile.v0 \
+        --local context=. \
+        --local dockerfile=. \
+        --export-cache type=registry,ref=$OCI_CACHE \
+        --import-cache type=registry,ref=$OCI_CACHE \
+        --opt platform=$OCI_PLATFORMS \
+        --output type=image,name=$OCI_IMAGE:$OCI_TAG,push=true

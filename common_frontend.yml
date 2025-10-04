@@ -1,2 +1,8 @@
 include:
-  - local: build_kaniko_multiarch.yml
+  - local: build_and_push_docker.yml
+
+stages:
+  - Build
+  
+Build:
+  extends: .build
