@@ -10,7 +10,7 @@
     OCI_IMAGE: $CI_REGISTRY_IMAGE
     OCI_TAG: latest
     OCI_CACHE: $CI_REGISTRY_IMAGE:cache
-    OCI_PLATFORMS: linux/amd64,linux/arm64
+    OCI_PLATFORMS: linux/arm64 #linux/amd64,linux/arm64
   before_script:
     - mkdir -p ~/.docker
     - echo "{\"auths\":{\"$OCI_REGISTRY\":{\"username\":\"$OCI_USER\",\"password\":\"$OCI_PASS\"}}}" > ~/.docker/config.json
