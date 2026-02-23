@@ -6,3 +6,5 @@ stages:
   
 Build:
   extends: .build
+  tags:
+    - k8s
