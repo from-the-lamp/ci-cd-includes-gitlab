@@ -7,4 +7,4 @@ stages:
 Build:
   extends: .build
   tags:
-    - k8s
+    - k8s-arm64
