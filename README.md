@@ -59,4 +59,4 @@ You can override variables in your project to customize the process:
 
 ## 📜 License
 
-Distributed under the **Apache 2.0** license. See the [LICENSE](file:///Users/djinn/GIT/gitlab/from-the-lamp/infra/ci-cd-includes/LICENSE) file for details.
+Distributed under the **Apache 2.0** license. See the [LICENSE](./LICENSE) file for details.
