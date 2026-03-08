@@ -8,3 +8,7 @@ Build:
   extends: .build
   tags:
     - k8s-arm64
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: on_success
+    - when: never
