@@ -30,3 +30,9 @@ Layer caching is enabled via GitLab registry:
 ## Security
 
 The build runs with rootless BuildKit.
+
+Registry credentials (`OCI_PASS`) are written to `~/.docker/config.json`
+inside an ephemeral CI container and are never persisted. To prevent
+accidental exposure in job logs, mark `OCI_PASS` as a
+[masked variable](https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable)
+in your project's CI/CD settings.
