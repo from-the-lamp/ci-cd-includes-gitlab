@@ -36,6 +36,10 @@ include:
 # This will automatically add the Build stage and Build job
 ```
 
+> **Note:** By default, builds trigger only on merge request events.
+> Push-based pipelines are not included. Override `rules` in your
+> project if you need a different trigger strategy.
+
 ## ⚙️ Environment Variables
 
 You can override variables in your project to customize the process:
