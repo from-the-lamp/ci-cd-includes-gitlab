@@ -4,12 +4,9 @@ This repo provides reusable GitLab CI templates for building and pushing Docker 
 
 ## Multi-arch builds
 
-By default, the build template targets:
+By default, the build template targets `linux/arm64`.
 
-- `linux/amd64`
-- `linux/arm64`
-
-Override per project if you need a single platform:
+Override per project if you need a different platform or multi-arch:
 
 ```yaml
 variables:
