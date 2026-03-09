@@ -46,6 +46,7 @@ You can override variables in your project to customize the process:
 | `OCI_PLATFORMS` | `linux/amd64,linux/arm64` | List of target platforms. |
 | `OCI_IMAGE` | `$CI_REGISTRY_IMAGE` | Full path to the image in Registry. |
 | `OCI_CACHE` | `$CI_REGISTRY_IMAGE:cache` | Path for the cache image. |
+| `OCI_DOCKERFILE` | `Dockerfile` | Path to the Dockerfile relative to the build context. |
 
 ## 🔗 Project Structure
 

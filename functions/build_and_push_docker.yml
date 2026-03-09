@@ -12,6 +12,7 @@
     OCI_CACHE: $CI_REGISTRY_IMAGE:cache
     # Default to linux/arm64; override per-project if needed
     OCI_PLATFORMS: linux/arm64
+    OCI_DOCKERFILE: Dockerfile
   timeout: 3h
   before_script:
     - mkdir -p ~/.docker
@@ -22,6 +23,7 @@
         --frontend dockerfile.v0 \
         --local context=. \
         --local dockerfile=. \
+        --opt filename=$OCI_DOCKERFILE \
         --export-cache type=registry,ref=$OCI_CACHE \
         --import-cache type=registry,ref=$OCI_CACHE \
         --opt platform=$OCI_PLATFORMS \
