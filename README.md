@@ -10,7 +10,7 @@ A collection of reusable GitLab CI/CD templates and functions optimized for fast
 
 ## 🚀 Key Features
 
-- **Multi-platform build**: Native support for `linux/amd64` and `linux/arm64` out of the box.
+- **Multi-platform build**: Support for multi-arch builds via `OCI_PLATFORMS`. Default: `linux/arm64`.
 - **Rootless Buildkit**: Secure builds without root privileges.
 - **Smart Caching**: Integration with GitLab Registry for layer caching.
 - **Zero Configuration**: Ready-to-use presets for Backend and Frontend projects.
@@ -47,7 +47,7 @@ You can override variables in your project to customize the process:
 | Variable | Default Value | Description |
 | :--- | :--- | :--- |
 | `OCI_TAG` | `latest` | Tag for the created image. |
-| `OCI_PLATFORMS` | `linux/amd64,linux/arm64` | List of target platforms. |
+| `OCI_PLATFORMS` | `linux/arm64` | List of target platforms. |
 | `OCI_IMAGE` | `$CI_REGISTRY_IMAGE` | Full path to the image in Registry. |
 | `OCI_CACHE` | `$CI_REGISTRY_IMAGE:cache` | Path for the cache image. |
 | `OCI_DOCKERFILE` | `Dockerfile` | Path to the Dockerfile relative to the build context. |
