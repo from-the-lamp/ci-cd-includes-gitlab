@@ -3,7 +3,7 @@ include:
 
 stages:
   - Build
-  
+
 Build:
   extends: .build
   tags:
